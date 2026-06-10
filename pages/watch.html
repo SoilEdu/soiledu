@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch — Soil Edu</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.filter-btn{padding:0.45rem 1.1rem;border-radius:var(--radius-pill);font-size:0.83rem;font-weight:600;border:1.5px solid var(--border-mid);background:var(--white);color:var(--text-mid);transition:var(--transition);cursor:pointer}
+.filter-btn.active,.filter-btn:hover{background:var(--green-600);color:white;border-color:var(--green-600)}
+.vid-thumb{width:100%;aspect-ratio:16/9;background:var(--green-100);display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden}
+.vid-play-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;opacity:0;transition:var(--transition)}
+.vid-play-overlay .play{width:56px;height:56px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;padding-left:4px}
+.video-wrapper:hover .vid-play-overlay{opacity:1}
+.playlist-item{display:flex;gap:1rem;align-items:center;padding:1rem;border-radius:var(--radius-md);transition:var(--transition);cursor:pointer;border:1px solid transparent}
+.playlist-item:hover{background:var(--green-50);border-color:var(--border)}
+.playlist-thumb{width:90px;height:54px;border-radius:var(--radius-sm);background:var(--green-100);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.playlist-info h5{font-size:0.88rem;color:var(--green-800);margin-bottom:0.2rem}
+.playlist-info span{font-size:0.75rem;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-mark">🌱</div><span class="nav-logo-text">Soil<span>Edu</span></span></a>
+    <div class="nav-links">
+      <a href="soil-science.html" class="nav-link">Soil Science</a>
+      <a href="watch.html" class="nav-link active">Watch</a>
+      <a href="soil-rangers.html" class="nav-link rangers">Soil Rangers</a>
+      <a href="books.html" class="nav-link">Books</a>
+      <a href="learning-hub.html" class="nav-link">Learning Hub</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Get in Touch</a>
+    <div class="nav-hamburger"><span></span><span></span><span></span></div>
+  </div>
+  <div class="nav-mobile"><a href="../index.html" class="nav-link">Home</a><a href="watch.html" class="nav-link">Watch</a><a href="soil-rangers.html" class="nav-link">Soil Rangers</a></div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb mb-3"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Watch</span></nav>
+    <span class="eyebrow">Video Library</span>
+    <h1>Watch & Learn</h1>
+    <p>Explainers, animations, Soil Rangers episodes, and research videos — all in one place.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterVids('all',this)">All Videos</button>
+      <button class="filter-btn" onclick="filterVids('explainer',this)">Explainers</button>
+      <button class="filter-btn" onclick="filterVids('rangers',this)">Soil Rangers</button>
+      <button class="filter-btn" onclick="filterVids('research',this)">Research</button>
+      <button class="filter-btn" onclick="filterVids('animation',this)">Animation</button>
+    </div>
+
+    <div class="grid-3" id="video-grid">
+      <div class="video-wrapper reveal reveal-delay-1" data-cat="rangers">
+        <div class="vid-thumb">🪱<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-purple">Soil Rangers</span><span class="caption">12 min</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">Ep 1: Wriggles to the Rescue</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">The Rangers discover the topsoil is being compacted and must aerate it before it's too late.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-2" data-cat="explainer">
+        <div class="vid-thumb">🌍<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-green">Explainer</span><span class="caption">4:32</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">What Lives in a Teaspoon of Soil?</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">Billions of microorganisms hiding in a single scoop of healthy soil.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-3" data-cat="research">
+        <div class="vid-thumb">⚗️<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-gold">Research</span><span class="caption">7:15</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">How Soil Stores Carbon</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">Scientists explain how restoring healthy soils can fight climate change.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-1" data-cat="rangers">
+        <div class="vid-thumb">🌊<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-purple">Soil Rangers</span><span class="caption">11 min</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">Ep 2: The Flood From Above</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">A rainstorm threatens to wash away the topsoil — erosion in action.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-2" data-cat="animation">
+        <div class="vid-thumb">🍄<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-brown">Animation</span><span class="caption">3:20</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">The Fungal Network Explained</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">Short animated explainer on mycorrhizal fungi and how they connect plants.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-3" data-cat="explainer">
+        <div class="vid-thumb">📊<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-green">Explainer</span><span class="caption">5:48</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">Soil Horizons — Digging Deeper</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">A visual journey through the layers of soil from O horizon to bedrock.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-1" data-cat="rangers">
+        <div class="vid-thumb">🌱<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-purple">Soil Rangers</span><span class="caption">13 min</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">Ep 3: Mykie's Missing Network</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">The fungal threads are broken — can the Rangers restore them in time?</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-2" data-cat="research">
+        <div class="vid-thumb">🌾<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-gold">Research</span><span class="caption">8:40</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">Soil Degradation and Food Security</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">Researchers discuss how soil loss threatens global food production.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-3" data-cat="explainer">
+        <div class="vid-thumb">💧<div class="vid-play-overlay"><div class="play">▶</div></div></div>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="blog-meta"><span class="badge badge-green">Explainer</span><span class="caption">6:10</span></div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem;font-size:1rem">Soil as a Water Filter</h4>
+          <p style="font-size:0.82rem;margin-top:0.3rem">How soil cleans our water and what happens when it's too damaged to do so.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem">
+      <a href="#" class="btn btn-secondary btn-lg">Load more videos ↓</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="nav-logo"><div class="nav-logo-mark">🌱</div><span class="nav-logo-text" style="color:var(--green-200)">Soil<span style="color:var(--green-400)">Edu</span></span></div><p>Discovering the hidden world beneath our feet.</p></div>
+      <div class="footer-col"><h5>Watch</h5><a href="watch.html">All Videos</a><a href="soil-rangers.html">Soil Rangers</a><a href="watch.html">Explainers</a></div>
+      <div class="footer-col"><h5>Learn</h5><a href="soil-science.html">Soil Science</a><a href="learning-hub.html">Learning Hub</a><a href="research.html">Research</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Soil Edu.</span><span>Made with 🌱</span></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function filterVids(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#video-grid .video-wrapper').forEach(v => {
+    v.style.display = (cat === 'all' || v.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outreach & Community — Soil Edu</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ── OUTREACH-SPECIFIC ─── */
+.programme-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.programme-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+}
+.programme-card-header {
+  padding: 2.25rem 2rem 1.5rem;
+  position: relative;
+}
+.programme-card-icon {
+  width: 64px; height: 64px;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+.programme-card h3 { color: var(--green-800); }
+.programme-card-body {
+  padding: 0 2rem 2rem;
+  flex: 1;
+  display: flex; flex-direction: column;
+}
+.programme-card-body p { font-size: 0.9rem; }
+.programme-card ul {
+  margin: 1rem 0; list-style: none;
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.programme-card ul li {
+  font-size: 0.85rem; color: var(--text-mid);
+  display: flex; align-items: flex-start; gap: 0.5rem;
+}
+.programme-card ul li::before { content: '✓'; color: var(--green-500); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.programme-card .card-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.visit-step {
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  padding: 1.5rem; background: var(--white);
+  border-radius: var(--radius-lg); border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.visit-step:hover { box-shadow: var(--shadow-sm); }
+.step-num {
+  width: 48px; height: 48px; flex-shrink: 0;
+  border-radius: 50%; background: var(--green-600);
+  color: var(--white); font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-content h4 { color: var(--green-800); margin-bottom: 0.3rem; }
+.step-content p { font-size: 0.88rem; }
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--green-800);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.impact-cell {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.impact-cell:last-child { border-right: none; }
+.impact-number {
+  font-family: var(--font-display);
+  font-size: 3rem; font-weight: 800;
+  color: var(--green-300); line-height: 1;
+}
+.impact-label {
+  font-size: 0.82rem; color: rgba(255,255,255,0.65);
+  margin-top: 0.5rem; line-height: 1.4;
+}
+
+.partner-tier {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 2rem;
+  transition: var(--transition);
+}
+.partner-tier:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.partner-tier.featured {
+  border-color: var(--gold-400);
+  background: linear-gradient(160deg, var(--gold-100), var(--white));
+}
+.tier-badge {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.25rem 0.75rem; border-radius: var(--radius-pill);
+  margin-bottom: 0.75rem;
+}
+.tier-price {
+  font-family: var(--font-display); font-size: 2.2rem;
+  font-weight: 800; color: var(--green-700); line-height: 1;
+  margin: 0.75rem 0;
+}
+.tier-price span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+.tier-features { list-style: none; margin: 1rem 0; }
+.tier-features li {
+  font-size: 0.85rem; padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.5rem; color: var(--text-mid);
+}
+.tier-features li:last-child { border-bottom: none; }
+.tier-features li .tick { color: var(--green-500); font-weight: 700; flex-shrink: 0; }
+.tier-features li .cross { color: var(--text-light); flex-shrink: 0; }
+
+.school-testimonial {
+  background: var(--green-50); border-radius: var(--radius-xl);
+  padding: 2rem; border-left: 4px solid var(--green-400);
+}
+.testimonial-quote { font-size: 1.05rem; font-style: italic; color: var(--green-900); line-height: 1.7; }
+.testimonial-author { margin-top: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+.author-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--green-200); display: flex; align-items: center;
+  justify-content: center; font-size: 1.4rem; flex-shrink: 0;
+}
+.author-name { font-size: 0.88rem; font-weight: 600; color: var(--green-800); }
+.author-role { font-size: 0.78rem; color: var(--text-muted); }
+
+@media (max-width: 768px) {
+  .impact-grid { grid-template-columns: 1fr 1fr; }
+  .impact-cell { border-bottom: 1px solid rgba(255,255,255,0.1); }
+}
+@media (max-width: 480px) {
+  .impact-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="nav-logo-mark">🌱</div>
+      <span class="nav-logo-text">Soil<span>Edu</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="soil-science.html" class="nav-link">Soil Science</a>
+      <a href="watch.html" class="nav-link">Watch</a>
+      <a href="soil-rangers.html" class="nav-link rangers">Soil Rangers</a>
+      <a href="books.html" class="nav-link">Books</a>
+      <a href="learning-hub.html" class="nav-link">Learning Hub</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Get in Touch</a>
+    <div class="nav-hamburger"><span></span><span></span><span></span></div>
+  </div>
+  <div class="nav-mobile">
+    <a href="../index.html" class="nav-link">Home</a>
+    <a href="soil-science.html" class="nav-link">Soil Science</a>
+    <a href="soil-rangers.html" class="nav-link">Soil Rangers</a>
+    <a href="learning-hub.html" class="nav-link">Learning Hub</a>
+    <a href="outreach.html" class="nav-link">Outreach</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="background: linear-gradient(135deg, #0d2b1f 0%, #1a4a32 50%, #2d6a4f 100%);">
+  <div class="container">
+    <nav class="breadcrumb mb-3">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Outreach & Community</span>
+    </nav>
+    <span class="eyebrow">In the field & in schools</span>
+    <h1>Outreach & Community</h1>
+    <p>We take soil science off the screen and into classrooms, schoolgrounds, community gardens, and outdoor spaces. Real soil, real science, real impact.</p>
+    <div style="display:flex;gap:1rem;margin-top:1.75rem;flex-wrap:wrap;">
+      <a href="#school-visits" class="btn btn-gold">Book a School Visit</a>
+      <a href="#partnerships" class="btn" style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.35);border-radius:var(--radius-pill);padding:0.75rem 1.75rem;font-weight:600;">Partner With Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT NUMBERS -->
+<section class="section-sm bg-white">
+  <div class="container">
+    <div class="impact-grid reveal">
+      <div class="impact-cell">
+        <div class="impact-number">120+</div>
+        <div class="impact-label">Schools visited</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-number">4,800+</div>
+        <div class="impact-label">Children engaged</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-number">35+</div>
+        <div class="impact-label">Workshops delivered</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-number">12</div>
+        <div class="impact-label">Community gardens</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMMES -->
+<section class="section" style="background:var(--green-50);">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="eyebrow">Our programmes</span>
+      <h2 style="color:var(--green-800);">How we bring soil science to life</h2>
+      <p>From classroom visits to multi-day residencies, our outreach programmes are designed for real impact — leaving children with a lasting connection to the soil world.</p>
+    </div>
+    <div class="grid-3 mt-6">
+
+      <!-- School Visits -->
+      <div class="programme-card reveal reveal-delay-1" id="school-visits">
+        <div class="programme-card-header" style="background:var(--green-50);">
+          <div class="programme-card-icon" style="background:var(--green-100);">🏫</div>
+          <span class="badge badge-green mb-2">Primary & Secondary</span>
+          <h3>School Visits</h3>
+          <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--text-mid);">Our team brings soil science directly to your classroom — with hands-on activities, microscopes, live soil samples, and a whole lot of enthusiasm.</p>
+        </div>
+        <div class="programme-card-body">
+          <ul>
+            <li>Half-day or full-day session formats</li>
+            <li>Live soil microscopy — watch organisms move</li>
+            <li>Soil texture and composition experiments</li>
+            <li>Curriculum-linked to science standards</li>
+            <li>Take-home resource pack for every child</li>
+            <li>Post-visit worksheet and teacher resources</li>
+          </ul>
+          <div class="callout" style="margin-top:auto;">
+            <strong>Available for:</strong> Early Years, KS1, KS2, KS3<br>
+            <strong>Group size:</strong> Up to 32 children per session
+          </div>
+          <div class="card-footer mt-3">
+            <a href="contact.html?enquiry=school" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Visit</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshops -->
+      <div class="programme-card reveal reveal-delay-2">
+        <div class="programme-card-header" style="background:var(--brown-50);">
+          <div class="programme-card-icon" style="background:var(--brown-100);">🔬</div>
+          <span class="badge badge-brown mb-2">All ages</span>
+          <h3>Soil Science Workshops</h3>
+          <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--text-mid);">Deeper-dive sessions for science clubs, after-school programmes, home-education groups, and community organisations.</p>
+        </div>
+        <div class="programme-card-body">
+          <ul>
+            <li>2-hour intensive investigation sessions</li>
+            <li>Soil extraction and identification activities</li>
+            <li>Build your own mini ecosystem (wormery)</li>
+            <li>Soil health assessment toolkit</li>
+            <li>Suitable for family learning events</li>
+            <li>Available at your venue or partner sites</li>
+          </ul>
+          <div class="callout brown" style="margin-top:auto;">
+            <strong>Formats:</strong> Drop-in, booked group, or festival<br>
+            <strong>Capacity:</strong> 8–40 participants
+          </div>
+          <div class="card-footer mt-3">
+            <a href="contact.html?enquiry=workshop" class="btn btn-secondary" style="width:100%;justify-content:center;">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Garden programme -->
+      <div class="programme-card reveal reveal-delay-3">
+        <div class="programme-card-header" style="background:var(--gold-100);">
+          <div class="programme-card-icon" style="background:var(--gold-200);">🌻</div>
+          <span class="badge badge-gold mb-2">Outdoor Learning</span>
+          <h3>Soil & Garden Programme</h3>
+          <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--text-mid);">A term-long outdoor learning programme that transforms school gardens and community plots into living soil science labs.</p>
+        </div>
+        <div class="programme-card-body">
+          <ul>
+            <li>6-week or 12-week programme structure</li>
+            <li>Set up a school composting system</li>
+            <li>Long-term soil health monitoring</li>
+            <li>Seasonal planting linked to soil topics</li>
+            <li>Pupil-led data collection and recording</li>
+            <li>End-of-programme celebration event</li>
+          </ul>
+          <div class="callout gold" style="margin-top:auto;">
+            <strong>Best for:</strong> Schools with garden space<br>
+            <strong>Duration:</strong> 6 or 12 weeks
+          </div>
+          <div class="card-footer mt-3">
+            <a href="contact.html?enquiry=garden" class="btn btn-gold" style="width:100%;justify-content:center;">Find Out More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO BOOK -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="grid-2" style="gap:5rem;align-items:center;">
+      <div class="reveal">
+        <span class="eyebrow">How it works</span>
+        <h2 style="color:var(--green-800);margin-top:0.5rem;">Booking a school visit</h2>
+        <p style="margin:1rem 0;">Getting Soil Edu into your school is straightforward. Here's how the process works from initial enquiry to visit day.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;">
+          <div class="visit-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Send an enquiry</h4>
+              <p>Fill in our contact form with your school, year group, preferred dates, and any specific topics you'd like us to cover.</p>
+            </div>
+          </div>
+          <div class="visit-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>We'll get back to you</h4>
+              <p>Within 3 working days we'll confirm availability, discuss the session format, and answer any questions.</p>
+            </div>
+          </div>
+          <div class="visit-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Confirm and prepare</h4>
+              <p>We'll send a preparation guide so your class is ready to dig in. No prior soil knowledge required — we bring everything.</p>
+            </div>
+          </div>
+          <div class="visit-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Visit day!</h4>
+              <p>We arrive with all equipment, materials, and enthusiasm. You just need a classroom — or better yet, some outdoor space.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div class="school-testimonial">
+          <p class="testimonial-quote">"The Soil Edu visit was honestly one of the best science experiences my class has had all year. The children were fascinated — especially the live microscopy. We're still talking about it three weeks later."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍🏫</div>
+            <div>
+              <div class="author-name">Ms. Adaeze Okonkwo</div>
+              <div class="author-role">Year 4 Teacher, Lagos Primary School</div>
+            </div>
+          </div>
+        </div>
+        <div class="school-testimonial">
+          <p class="testimonial-quote">"We used the Soil Rangers resources before the visit, so the children already knew the characters. When the educator arrived and brought a real wormery, the excitement was incredible. Perfectly prepared resources."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👨‍🏫</div>
+            <div>
+              <div class="author-name">Mr. Tom Holloway</div>
+              <div class="author-role">Science Lead, Oakwood Primary School</div>
+            </div>
+          </div>
+        </div>
+        <div class="school-testimonial" style="background:var(--gold-100);border-left-color:var(--gold-400);">
+          <p class="testimonial-quote">"The garden programme has transformed our school grounds. Our pupils now run a composting system, conduct soil health checks monthly, and have a genuine sense of ownership over the land."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍🌾</div>
+            <div>
+              <div class="author-name">Dr. Priya Sharma</div>
+              <div class="author-role">Headteacher, Greenfield Academy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="section" style="background:var(--green-50);">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="eyebrow">Community</span>
+      <h2 style="color:var(--green-800);">Beyond the classroom</h2>
+      <p>Our outreach extends into community gardens, libraries, science festivals, and public spaces — wherever people are curious about the world beneath their feet.</p>
+    </div>
+    <div class="grid-3 mt-6">
+      <div class="card card-body reveal reveal-delay-1">
+        <div class="feature-icon" style="background:var(--green-100);">🏡</div>
+        <h3 style="color:var(--green-800);">Community Gardens</h3>
+        <p>We work with community garden projects to introduce soil literacy through hands-on growing and composting. Participants learn while improving their plots.</p>
+        <a href="contact.html" class="btn btn-ghost btn-sm mt-3">Learn more →</a>
+      </div>
+      <div class="card card-body reveal reveal-delay-2">
+        <div class="feature-icon" style="background:var(--brown-100);">🎪</div>
+        <h3 style="color:var(--green-800);">Science Festivals</h3>
+        <p>Our interactive soil science stall appears at science festivals, environmental fairs, and community events — bringing live soil microscopy and hands-on experiments to the public.</p>
+        <a href="contact.html" class="btn btn-ghost btn-sm mt-3">Invite us →</a>
+      </div>
+      <div class="card card-body reveal reveal-delay-3">
+        <div class="feature-icon" style="background:var(--gold-100);">📚</div>
+        <h3 style="color:var(--green-800);">Libraries & Museums</h3>
+        <p>We deliver family workshops in partnership with libraries and science museums — using soil science as a gateway to environmental education for all ages.</p>
+        <a href="contact.html" class="btn btn-ghost btn-sm mt-3">Partner with us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIPS -->
+<section class="section bg-white" id="partnerships">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="eyebrow">Partnerships</span>
+      <h2 style="color:var(--green-800);">Sponsor our outreach work</h2>
+      <p>Partner with Soil Edu to fund outreach programmes that bring soil science to schools and communities that need it most — and align your brand with environmental education.</p>
+    </div>
+    <div class="grid-3 mt-6">
+      <div class="partner-tier reveal reveal-delay-1">
+        <span class="tier-badge" style="background:var(--green-100);color:var(--green-800);">🌱 Seedling Partner</span>
+        <h3 style="color:var(--green-800);">Seedling</h3>
+        <div class="tier-price">£2,500 <span>/ year</span></div>
+        <ul class="tier-features">
+          <li><span class="tick">✓</span> Fund 5 school visits</li>
+          <li><span class="tick">✓</span> Logo on website sponsors page</li>
+          <li><span class="tick">✓</span> Annual impact report</li>
+          <li><span class="tick">✓</span> Social media mention</li>
+          <li><span class="cross">–</span> Co-branded resources</li>
+          <li><span class="cross">–</span> Speaking opportunity</li>
+        </ul>
+        <a href="contact.html?enquiry=sponsor" class="btn btn-secondary" style="width:100%;justify-content:center;">Enquire</a>
+      </div>
+      <div class="partner-tier featured reveal reveal-delay-2">
+        <span class="tier-badge" style="background:var(--gold-400);color:white;">⭐ Grower Partner</span>
+        <h3 style="color:var(--green-800);">Grower</h3>
+        <div class="tier-price">£8,000 <span>/ year</span></div>
+        <ul class="tier-features">
+          <li><span class="tick">✓</span> Fund 20 school visits</li>
+          <li><span class="tick">✓</span> Logo on all outreach materials</li>
+          <li><span class="tick">✓</span> Quarterly impact reports</li>
+          <li><span class="tick">✓</span> Co-branded resource pack</li>
+          <li><span class="tick">✓</span> Social media campaign</li>
+          <li><span class="cross">–</span> Naming rights on programme</li>
+        </ul>
+        <a href="contact.html?enquiry=sponsor" class="btn btn-gold" style="width:100%;justify-content:center;">Enquire</a>
+      </div>
+      <div class="partner-tier reveal reveal-delay-3">
+        <span class="tier-badge" style="background:var(--green-800);color:white;">🌳 Forest Partner</span>
+        <h3 style="color:var(--green-800);">Forest</h3>
+        <div class="tier-price">£20,000 <span>/ year</span></div>
+        <ul class="tier-features">
+          <li><span class="tick">✓</span> Fund a full outreach programme</li>
+          <li><span class="tick">✓</span> Naming rights on programme</li>
+          <li><span class="tick">✓</span> Monthly impact reporting</li>
+          <li><span class="tick">✓</span> Co-created content + video</li>
+          <li><span class="tick">✓</span> Speaking at Soil Edu events</li>
+          <li><span class="tick">✓</span> Bespoke partnership benefits</li>
+        </ul>
+        <a href="contact.html?enquiry=sponsor" class="btn btn-primary" style="width:100%;justify-content:center;">Enquire</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--text-muted);font-size:0.88rem;margin-top:1.5rem;" class="reveal">All partnership enquiries are handled personally. We'll tailor a proposal to your goals and budget.</p>
+  </div>
+</section>
+
+<!-- NEWSLETTER CTA -->
+<section class="section">
+  <div class="container">
+    <div class="newsletter-section reveal">
+      <div style="max-width:560px;">
+        <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-300);display:block;margin-bottom:0.75rem;">Community</span>
+        <h2 style="color:white;">Join the movement for soil literacy</h2>
+        <p style="color:rgba(255,255,255,0.8);margin-top:0.75rem;">Get updates on our outreach programmes, new school resources, and community events in your inbox.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Your email address" class="newsletter-input" required>
+          <button type="submit" class="btn btn-gold">Subscribe 🌱</button>
+        </form>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:0.75rem;">No spam. Unsubscribe any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:0.5rem;">
+          <div class="nav-logo-mark">🌱</div>
+          <span class="nav-logo-text" style="color:var(--green-200);">Soil<span style="color:var(--green-400);">Edu</span></span>
+        </div>
+        <p>Discovering the hidden world beneath our feet — through education, animation, books, and community.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">🎬</a>
+          <a href="#" class="footer-social">📘</a>
+          <a href="#" class="footer-social">📸</a>
+          <a href="#" class="footer-social">🐦</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Learn</h5>
+        <a href="soil-science.html">Soil Science</a>
+        <a href="research.html">Research</a>
+        <a href="watch.html">Watch</a>
+        <a href="learning-hub.html">Learning Hub</a>
+      </div>
+      <div class="footer-col">
+        <h5>Outreach</h5>
+        <a href="outreach.html">School Visits</a>
+        <a href="outreach.html">Workshops</a>
+        <a href="outreach.html#partnerships">Partnerships</a>
+        <a href="contact.html">Book a Visit</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Soil Edu. All rights reserved.</span>
+      <span>Made with 🌱 for a soil-literate world</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

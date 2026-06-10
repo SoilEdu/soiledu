@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soil Edu — Learning from the Ground Up</title>
+<meta name="description" content="Discover the hidden world beneath our feet. Soil Edu is a soil science education platform for children, educators, and curious minds.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── HOME-SPECIFIC ─── */
+.hero-above {
+  min-height: 70vh;
+  background: linear-gradient(160deg, #e0f4e8 0%, #c8e6c9 50%, #a5d6a7 100%);
+}
+.hero-landscape {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+  pointer-events: none; overflow: hidden;
+}
+.cloud {
+  position: absolute; background: white; border-radius: 40px;
+  opacity: 0.85;
+}
+.cloud::before, .cloud::after {
+  content: ''; position: absolute; background: white; border-radius: 50%;
+}
+.cloud-1 { width: 120px; height: 40px; top: 60px; left: 10%; }
+.cloud-1::before { width: 60px; height: 60px; top: -30px; left: 20px; }
+.cloud-1::after  { width: 40px; height: 40px; top: -20px; left: 55px; }
+.cloud-2 { width: 90px; height: 30px; top: 80px; left: 38%; }
+.cloud-2::before { width: 45px; height: 45px; top: -22px; left: 15px; }
+.cloud-2::after  { width: 30px; height: 30px; top: -15px; left: 45px; }
+.cloud-3 { width: 100px; height: 35px; top: 50px; right: 15%; }
+.cloud-3::before { width: 50px; height: 50px; top: -25px; left: 18px; }
+.cloud-3::after  { width: 35px; height: 35px; top: -18px; left: 52px; }
+.sun {
+  position: absolute; top: 40px; right: 12%;
+  width: 60px; height: 60px; background: #FFD54F;
+  border-radius: 50%; box-shadow: 0 0 30px rgba(255,213,79,0.5);
+}
+.ground-strip {
+  background: linear-gradient(180deg, #5a8a3c 0%, #3d6b22 60%, #2a4d17 100%);
+  height: 60px; position: absolute; bottom: 0; left: 0; right: 0;
+  border-radius: 0 0 0 0;
+}
+.ground-strip::before {
+  content: '🌳🌲🌳🌿🌱🌿🌲🌳🌿🌱';
+  position: absolute; bottom: 55px; left: 0; right: 0;
+  text-align: justify; font-size: 1.5rem; letter-spacing: 3rem;
+  padding: 0 1rem;
+}
+.hero-below-soil {
+  position: relative; background: linear-gradient(180deg, #4a2c0a 0%, #3b2208 40%, #251606 100%);
+  height: 380px; overflow: hidden;
+}
+.soil-stripe { position: absolute; left: 0; right: 0; }
+.s1 { top: 0; height: 80px; background: #5d3a1a; }
+.s2 { top: 80px; height: 80px; background: #4a2e12; }
+.s3 { top: 160px; height: 80px; background: #3a2008; }
+.s4 { top: 240px; height: 80px; background: #251406; }
+.s5 { top: 320px; height: 60px; background: #1a0e04; }
+.soil-label {
+  position: absolute; left: 2rem; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.soil-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+.l1 { top: 28px; } .l2 { top: 108px; } .l3 { top: 188px; } .l4 { top: 268px; }
+
+/* roots SVG styled inline */
+.root-svg { position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0.6; }
+.worm { position: absolute; font-size: 1.2rem; animation: wiggle 3s ease-in-out infinite; }
+.fungus { position: absolute; font-size: 1rem; opacity: 0.7; }
+@keyframes wiggle { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
+
+.scroll-hint {
+  position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: bounce 2s ease-in-out infinite;
+}
+.scroll-hint .arrow { font-size: 1.2rem; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+/* ── EXPLORE SECTION ── */
+.topic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.25rem; }
+
+/* ── VIDEO SECTION ── */
+.video-thumb-img {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--green-200); display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.video-wrapper { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition); }
+.video-wrapper:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.video-info { padding: 1rem 1.25rem 1.25rem; }
+.video-duration { font-size: 0.75rem; color: var(--text-muted); background: var(--green-50); padding: 0.2rem 0.6rem; border-radius: var(--radius-pill); }
+
+/* ── RANGERS SPOTLIGHT ── */
+.rangers-spotlight {
+  background: linear-gradient(135deg, var(--purple-700) 0%, var(--purple-600) 100%);
+  border-radius: var(--radius-xl); padding: 4rem; color: var(--white);
+  position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+}
+.rangers-spotlight::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: rgba(255,255,255,0.06); pointer-events: none;
+}
+.rangers-chars { display: flex; gap: 0.5rem; justify-content: center; }
+.char-bubble {
+  width: 80px; height: 80px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 2.4rem;
+  background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.25);
+  transition: var(--transition);
+}
+.char-bubble:hover { transform: scale(1.15) translateY(-4px); background: rgba(255,255,255,0.25); }
+
+/* ── STATS BANNER ── */
+.stats-banner {
+  background: var(--green-800); color: var(--white);
+  border-radius: var(--radius-xl); padding: 2.5rem; margin: 0;
+  display: grid; grid-template-columns: repeat(4,1fr); divide-x: 1px;
+}
+.stat-item { text-align: center; padding: 1rem; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat-item:last-child { border-right: none; }
+.stat-number { font-family: var(--font-display); font-size: 2.8rem; font-weight: 800; color: var(--green-300); line-height: 1; }
+.stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-top: 0.4rem; }
+
+/* ── BOOKS TEASER ── */
+.books-teaser { background: var(--brown-50); border-radius: var(--radius-xl); padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.book-stack { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.book-cover {
+  width: 100px; height: 140px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; border: 3px solid rgba(0,0,0,0.08);
+  transform-origin: bottom center;
+  box-shadow: 4px 6px 20px rgba(0,0,0,0.2);
+  transition: var(--transition);
+}
+.book-cover:hover { transform: rotate(-5deg) translateY(-8px); }
+.book-cover:nth-child(1) { background: #c8e6c9; transform: rotate(-6deg); }
+.book-cover:nth-child(2) { background: #ffe0b2; transform: rotate(3deg); }
+.book-cover:nth-child(3) { background: #e1bee7; transform: rotate(-2deg); }
+
+@media (max-width: 768px) {
+  .rangers-spotlight, .books-teaser { grid-template-columns: 1fr; padding: 2.5rem; }
+  .stats-banner { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">🌱</div>
+      <span class="nav-logo-text">Soil<span>Edu</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="pages/soil-science.html" class="nav-link">Soil Science</a>
+      <a href="pages/watch.html" class="nav-link">Watch</a>
+      <a href="pages/soil-rangers.html" class="nav-link rangers">Soil Rangers</a>
+      <a href="pages/books.html" class="nav-link">Books</a>
+      <a href="pages/learning-hub.html" class="nav-link">Learning Hub</a>
+      <a href="pages/research.html" class="nav-link">Research</a>
+      <a href="pages/blog.html" class="nav-link">Blog</a>
+      <a href="pages/contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="pages/contact.html" class="btn btn-primary btn-sm nav-cta">Get in Touch</a>
+    <div class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="nav-mobile">
+    <a href="pages/soil-science.html" class="nav-link">Soil Science</a>
+    <a href="pages/watch.html" class="nav-link">Watch</a>
+    <a href="pages/soil-rangers.html" class="nav-link">🎬 Soil Rangers</a>
+    <a href="pages/books.html" class="nav-link">Books & Comics</a>
+    <a href="pages/learning-hub.html" class="nav-link">Learning Hub</a>
+    <a href="pages/research.html" class="nav-link">Research</a>
+    <a href="pages/blog.html" class="nav-link">Blog</a>
+    <a href="pages/contact.html" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Above ground -->
+  <div class="hero-above" style="min-height:65vh; position:relative;">
+    <div class="sun"></div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="hero-content" style="padding-top:4rem">
+      <div class="hero-tagline">🌍 Learning from the Ground Up</div>
+      <h1 class="hero-title">Discover the <em>hidden world</em><br>beneath our feet</h1>
+      <p class="hero-subtitle">Soil Edu brings soil science to life for children, educators, and curious minds — through animation, books, comics, and hands-on learning resources.</p>
+      <div class="hero-actions">
+        <a href="pages/soil-science.html" class="btn btn-primary btn-lg">Explore Soil Science</a>
+        <a href="pages/soil-rangers.html" class="btn btn-secondary btn-lg">🎬 Soil Rangers</a>
+      </div>
+    </div>
+    <div class="ground-strip"></div>
+  </div>
+
+  <!-- Below ground — soil cross-section -->
+  <div class="hero-below-soil">
+    <div class="soil-stripe s1"></div>
+    <div class="soil-stripe s2"></div>
+    <div class="soil-stripe s3"></div>
+    <div class="soil-stripe s4"></div>
+    <div class="soil-stripe s5"></div>
+
+    <span class="soil-label l1" style="left:2rem;right:60%">O Horizon — Organic layer</span>
+    <span class="soil-label l2" style="left:2rem;right:60%">A Horizon — Topsoil</span>
+    <span class="soil-label l3" style="left:2rem;right:60%">B Horizon — Subsoil</span>
+    <span class="soil-label l4" style="left:2rem;right:60%">C Horizon — Parent material</span>
+
+    <!-- Roots SVG -->
+    <svg class="root-svg" width="600" height="380" viewBox="0 0 600 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M300 0 Q300 60 280 80 Q260 100 240 140 Q220 180 210 240 Q205 280 200 340" stroke="#74c69d" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7"/>
+      <path d="M300 0 Q300 60 320 80 Q340 100 360 140 Q380 180 390 240 Q395 280 400 340" stroke="#74c69d" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7"/>
+      <path d="M280 80 Q250 100 230 120 Q200 145 180 160" stroke="#52b788" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <path d="M320 80 Q350 100 370 120 Q400 145 420 160" stroke="#52b788" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+      <path d="M240 140 Q210 155 190 175 Q165 195 150 210" stroke="#40916c" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M360 140 Q390 155 410 175 Q435 195 450 210" stroke="#40916c" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M210 240 Q175 255 155 275 Q130 295 115 315" stroke="#2d6a4f" stroke-width="1.5" fill="none" opacity="0.45"/>
+      <path d="M390 240 Q425 255 445 275 Q470 295 485 315" stroke="#2d6a4f" stroke-width="1.5" fill="none" opacity="0.45"/>
+      <!-- fungal threads -->
+      <path d="M200 200 Q220 210 240 205 Q260 200 280 210 Q300 220 320 210 Q340 200 360 210 Q380 220 400 200" stroke="#ddb892" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="4 4"/>
+      <path d="M190 300 Q230 290 270 300 Q310 310 350 295 Q390 280 420 300" stroke="#ddb892" stroke-width="1" fill="none" opacity="0.35" stroke-dasharray="4 4"/>
+    </svg>
+
+    <div class="worm" style="top:90px;left:62%;animation-delay:0.5s">🪱</div>
+    <div class="worm" style="top:170px;left:35%;animation-delay:1.2s">🪱</div>
+    <div class="worm" style="top:250px;left:70%;animation-delay:0.8s">🪱</div>
+    <div class="fungus" style="top:120px;right:25%">🍄</div>
+    <div class="fungus" style="top:200px;left:28%">🔮</div>
+    <div class="fungus" style="top:300px;right:32%;font-size:1.4rem">🦠</div>
+
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
+      <span class="arrow">↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS SOIL EDU -->
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Education that goes <em>deep</em></h2>
+      <p>We believe soil literacy is one of the most important things we can teach the next generation. Soil Edu makes it accessible, engaging, and unforgettable.</p>
+    </div>
+    <div class="grid-3" style="gap:1.5rem">
+      <div class="card card-body reveal reveal-delay-1" style="text-align:center">
+        <div class="feature-icon" style="margin:0 auto 1rem">🎬</div>
+        <h3>Animated Series</h3>
+        <p>Soil Rangers brings underground characters to life in a curriculum-aligned animated series for primary-age children.</p>
+        <a href="pages/soil-rangers.html" class="btn btn-ghost btn-sm mt-3">Meet the Rangers →</a>
+      </div>
+      <div class="card card-body reveal reveal-delay-2" style="text-align:center">
+        <div class="feature-icon brown" style="margin:0 auto 1rem">📚</div>
+        <h3>Books & Comics</h3>
+        <p>Our illustrated books, comic series, and activity books turn soil science into stories children love to read and share.</p>
+        <a href="pages/books.html" class="btn btn-ghost btn-sm mt-3">Browse Books →</a>
+      </div>
+      <div class="card card-body reveal reveal-delay-3" style="text-align:center">
+        <div class="feature-icon gold" style="margin:0 auto 1rem">🏫</div>
+        <h3>Classroom Resources</h3>
+        <p>Free worksheets, lesson plans, posters, quizzes, and activities aligned with science curricula for educators worldwide.</p>
+        <a href="pages/learning-hub.html" class="btn btn-ghost btn-sm mt-3">Get Resources →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section-sm" style="background:var(--green-50)">
+  <div class="container">
+    <div class="stats-banner reveal">
+      <div class="stat-item"><div class="stat-number">8+</div><div class="stat-label">Soil Science Topics</div></div>
+      <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Free Resources</div></div>
+      <div class="stat-item"><div class="stat-number">12+</div><div class="stat-label">Video Lessons</div></div>
+      <div class="stat-item"><div class="stat-number">🌍</div><div class="stat-label">Global Community</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORE SOIL SCIENCE -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="flex-between mb-6 reveal">
+      <div>
+        <span class="eyebrow">Soil Science</span>
+        <h2 style="color:var(--green-800);margin-top:0.5rem">Explore the underground world</h2>
+      </div>
+      <a href="pages/soil-science.html" class="btn btn-secondary">View all topics →</a>
+    </div>
+    <div class="topic-grid">
+      <a href="pages/soil-science.html#what-is-soil" class="topic-card reveal reveal-delay-1">
+        <span class="topic-emoji">🌍</span>
+        <h3>What is Soil?</h3>
+        <p>The living skin of our planet — more than just dirt.</p>
+      </a>
+      <a href="pages/soil-science.html#layers" class="topic-card reveal reveal-delay-2">
+        <span class="topic-emoji">📊</span>
+        <h3>Soil Layers</h3>
+        <p>From leaf litter to bedrock — each horizon tells a story.</p>
+      </a>
+      <a href="pages/soil-science.html#organisms" class="topic-card reveal reveal-delay-3">
+        <span class="topic-emoji">🪱</span>
+        <h3>Soil Organisms</h3>
+        <p>Trillions of tiny creatures that keep soil alive.</p>
+      </a>
+      <a href="pages/soil-science.html#carbon" class="topic-card reveal reveal-delay-4">
+        <span class="topic-emoji">⚗️</span>
+        <h3>Soil Carbon</h3>
+        <p>Why soil is our planet's greatest carbon store.</p>
+      </a>
+      <a href="pages/soil-science.html#climate" class="topic-card reveal">
+        <span class="topic-emoji">🌡️</span>
+        <h3>Soil & Climate</h3>
+        <p>The underground hero in fighting climate change.</p>
+      </a>
+      <a href="pages/soil-science.html#food" class="topic-card reveal reveal-delay-1">
+        <span class="topic-emoji">🌾</span>
+        <h3>Soil & Food</h3>
+        <p>Almost all our food starts with healthy soil.</p>
+      </a>
+      <a href="pages/soil-science.html#water" class="topic-card reveal reveal-delay-2">
+        <span class="topic-emoji">💧</span>
+        <h3>Soil & Water</h3>
+        <p>How soil filters, stores, and cleans our water.</p>
+      </a>
+      <a href="pages/soil-science.html#biodiversity" class="topic-card reveal reveal-delay-3">
+        <span class="topic-emoji">🦠</span>
+        <h3>Soil Biodiversity</h3>
+        <p>The most biodiverse habitat on Earth — right underfoot.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section" style="background:var(--green-50)">
+  <div class="container">
+    <div class="flex-between mb-6 reveal">
+      <div>
+        <span class="eyebrow">Watch & Learn</span>
+        <h2 style="color:var(--green-800);margin-top:0.5rem">Featured videos</h2>
+      </div>
+      <a href="pages/watch.html" class="btn btn-secondary">All videos →</a>
+    </div>
+    <div class="grid-3">
+      <div class="video-wrapper reveal reveal-delay-1">
+        <div class="video-thumb-img">🌍</div>
+        <div class="video-info">
+          <div class="blog-meta">
+            <span class="badge badge-green">Explainer</span>
+            <span class="video-duration">⏱ 4:32</span>
+          </div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem">What Lives in a Teaspoon of Soil?</h4>
+          <p style="font-size:0.85rem;margin-top:0.4rem">Discover the billions of microorganisms hiding in a single scoop of healthy soil.</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-2">
+        <div class="video-thumb-img">🪱</div>
+        <div class="video-info">
+          <div class="blog-meta">
+            <span class="badge badge-brown">Soil Rangers</span>
+            <span class="video-duration">⏱ 12:08</span>
+          </div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem">Wriggles to the Rescue — Episode 1</h4>
+          <p style="font-size:0.85rem;margin-top:0.4rem">Our hero earthworm discovers the soil is in danger — and sets out to save it!</p>
+        </div>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-3">
+        <div class="video-thumb-img">⚗️</div>
+        <div class="video-info">
+          <div class="blog-meta">
+            <span class="badge badge-gold">Research</span>
+            <span class="video-duration">⏱ 7:15</span>
+          </div>
+          <h4 style="color:var(--green-800);margin-top:0.5rem">How Soil Stores Carbon</h4>
+          <p style="font-size:0.85rem;margin-top:0.4rem">Scientists explain how restoring healthy soils can help fight climate change.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOIL RANGERS SPOTLIGHT -->
+<section class="section">
+  <div class="container">
+    <div class="rangers-spotlight reveal">
+      <div>
+        <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple-300);display:block;margin-bottom:0.75rem">🎬 Animated Series</span>
+        <h2 style="color:white;font-size:clamp(1.8rem,3.5vw,2.8rem)">Meet the<br>Soil Rangers</h2>
+        <p style="color:rgba(255,255,255,0.85);margin:1rem 0 1.75rem;font-size:1.05rem">Join Wriggles the Earthworm, Mykie the Fungus, and their underground crew as they embark on soil-saving adventures — teaching kids about soil science along the way.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="pages/soil-rangers.html" class="btn btn-gold">Meet the Rangers</a>
+          <a href="pages/watch.html" class="btn" style="border:2px solid rgba(255,255,255,0.4);color:white;border-radius:var(--radius-pill);padding:0.75rem 1.75rem;font-size:0.95rem;font-weight:600">Watch Trailer ▶</a>
+        </div>
+      </div>
+      <div>
+        <div class="rangers-chars" style="flex-wrap:wrap;gap:1rem">
+          <div class="char-bubble">🪱</div>
+          <div class="char-bubble">🍄</div>
+          <div class="char-bubble">🐛</div>
+          <div class="char-bubble">🦠</div>
+          <div class="char-bubble">🐜</div>
+          <div class="char-bubble">🌱</div>
+        </div>
+        <p style="text-align:center;color:rgba(255,255,255,0.6);font-size:0.85rem;margin-top:1.5rem">Wriggles · Mykie · Cater · Micro · Anty · Sprout</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS TEASER -->
+<section class="section" style="background:var(--brown-50)">
+  <div class="container">
+    <div class="books-teaser reveal">
+      <div class="book-stack">
+        <div class="book-cover">📗</div>
+        <div class="book-cover">📙</div>
+        <div class="book-cover">📕</div>
+      </div>
+      <div>
+        <span class="eyebrow" style="color:var(--brown-600)">Books & Comics</span>
+        <h2 style="color:var(--brown-800);margin-top:0.5rem">Stories that grow curiosity</h2>
+        <p style="color:var(--brown-700);margin:1rem 0 1.5rem">Our illustrated books, comic series, and classroom readers bring soil science to life in formats children — and adults — love. Coming soon and available to pre-order.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="pages/books.html" class="btn btn-primary">Explore Books</a>
+          <a href="pages/learning-hub.html" class="btn btn-secondary">Free Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING HUB TEASER -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="eyebrow">Learning Hub</span>
+      <h2 style="color:var(--green-800)">Free resources for educators & families</h2>
+      <p>Download worksheets, lesson plans, posters, quizzes, and colouring pages — all free, all curriculum-aligned, all designed with care.</p>
+    </div>
+    <div class="grid-4 mt-6">
+      <div class="resource-card reveal reveal-delay-1">
+        <div class="resource-icon">📄</div>
+        <h4>Worksheets</h4>
+        <p>Printable activities for all ages.</p>
+        <div class="resource-footer">
+          <span class="badge badge-green">20+ available</span>
+          <a href="pages/learning-hub.html" class="btn btn-ghost btn-sm">Get →</a>
+        </div>
+      </div>
+      <div class="resource-card reveal reveal-delay-2">
+        <div class="resource-icon">📋</div>
+        <h4>Lesson Plans</h4>
+        <p>Ready-to-teach classroom sessions.</p>
+        <div class="resource-footer">
+          <span class="badge badge-brown">12+ available</span>
+          <a href="pages/learning-hub.html" class="btn btn-ghost btn-sm">Get →</a>
+        </div>
+      </div>
+      <div class="resource-card reveal reveal-delay-3">
+        <div class="resource-icon">🗺️</div>
+        <h4>Posters</h4>
+        <p>Beautiful classroom displays.</p>
+        <div class="resource-footer">
+          <span class="badge badge-gold">8+ available</span>
+          <a href="pages/learning-hub.html" class="btn btn-ghost btn-sm">Get →</a>
+        </div>
+      </div>
+      <div class="resource-card reveal reveal-delay-4">
+        <div class="resource-icon">🎨</div>
+        <h4>Colouring Pages</h4>
+        <p>Soil creatures and cross-sections.</p>
+        <div class="resource-footer">
+          <span class="badge badge-purple">15+ available</span>
+          <a href="pages/learning-hub.html" class="btn btn-ghost btn-sm">Get →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH TEASER -->
+<section class="section" style="background:var(--green-50)">
+  <div class="container">
+    <div class="grid-2" style="gap:4rem;align-items:center">
+      <div class="reveal">
+        <span class="eyebrow">Research to Reality</span>
+        <h2 style="color:var(--green-800);margin-top:0.5rem">Turning science into understanding</h2>
+        <p style="margin:1rem 0">We translate the latest soil research from university labs and field stations into plain-English stories that anyone can understand and share.</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0">
+          <div style="display:flex;align-items:center;gap:0.75rem"><span style="font-size:1.2rem">🍄</span><span style="font-size:0.9rem;color:var(--text-mid)">Mycorrhizal fungi networks</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem"><span style="font-size:1.2rem">🌡️</span><span style="font-size:0.9rem;color:var(--text-mid)">Soil carbon and climate change</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem"><span style="font-size:1.2rem">🌲</span><span style="font-size:0.9rem;color:var(--text-mid)">Forest soil biodiversity</span></div>
+          <div style="display:flex;align-items:center;gap:0.75rem"><span style="font-size:1.2rem">☠️</span><span style="font-size:0.9rem;color:var(--text-mid)">Soil pollution and remediation</span></div>
+        </div>
+        <a href="pages/research.html" class="btn btn-primary">Explore Research →</a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div style="background:var(--white);border-radius:var(--radius-xl);padding:2rem;border:1px solid var(--border)">
+          <div class="callout">
+            <strong>Did you know?</strong><br>
+            A single teaspoon of healthy topsoil contains more living organisms than there are people on Earth.
+          </div>
+          <div class="callout brown" style="margin-top:1rem">
+            <strong>New research:</strong><br>
+            Mycorrhizal fungi connect up to 90% of land plants, forming a vast underground communication network.
+          </div>
+          <div class="callout gold" style="margin-top:1rem">
+            <strong>Climate fact:</strong><br>
+            Soils store more carbon than all the world's vegetation and atmosphere combined.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section">
+  <div class="container">
+    <div class="newsletter-section reveal">
+      <div style="max-width:560px">
+        <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-300);display:block;margin-bottom:0.75rem">Community</span>
+        <h2 style="color:white">Join the Soil Edu community</h2>
+        <p style="color:rgba(255,255,255,0.8);margin-top:0.75rem">Get new resources, soil science stories, Soil Rangers updates, and research round-ups delivered to your inbox. No spam, just soil.</p>
+        <form class="newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Your email address" class="newsletter-input" required>
+          <button type="submit" class="btn btn-gold">Subscribe 🌱</button>
+        </form>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:0.75rem">Join educators, parents, and soil enthusiasts worldwide. Unsubscribe any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:0.5rem">
+          <div class="nav-logo-mark">🌱</div>
+          <span class="nav-logo-text" style="color:var(--green-200)">Soil<span style="color:var(--green-400)">Edu</span></span>
+        </div>
+        <p>Discovering the hidden world beneath our feet — through education, animation, books, and community.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social">🎬</a>
+          <a href="#" class="footer-social">📘</a>
+          <a href="#" class="footer-social">📸</a>
+          <a href="#" class="footer-social">🐦</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Learn</h5>
+        <a href="pages/soil-science.html">Soil Science</a>
+        <a href="pages/research.html">Research to Reality</a>
+        <a href="pages/watch.html">Watch Videos</a>
+        <a href="pages/learning-hub.html">Learning Hub</a>
+      </div>
+      <div class="footer-col">
+        <h5>Content</h5>
+        <a href="pages/soil-rangers.html">Soil Rangers</a>
+        <a href="pages/books.html">Books & Comics</a>
+        <a href="pages/blog.html">Blog</a>
+        <a href="pages/outreach.html">Outreach</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="pages/about.html">About Us</a>
+        <a href="pages/contact.html">Contact</a>
+        <a href="pages/contact.html#partners">Partnerships</a>
+        <a href="#">Newsletter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Soil Edu. All rights reserved.</span>
+      <span>Made with 🌱 for a soil-literate world</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

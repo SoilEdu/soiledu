@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Hub — Soil Edu</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.res-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column}
+.res-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.res-card-top{padding:1.75rem 1.5rem 1rem;background:var(--green-50)}
+.res-card-top .icon{font-size:2.5rem;margin-bottom:0.75rem;display:block}
+.res-card-top h4{color:var(--green-800);font-size:1rem}
+.res-card-bottom{padding:1rem 1.5rem 1.25rem;flex:1;display:flex;flex-direction:column;gap:0.5rem}
+.res-card-bottom p{font-size:0.83rem;flex:1}
+.res-meta{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap}
+.age-badge{background:var(--green-100);color:var(--green-700);padding:0.2rem 0.6rem;border-radius:var(--radius-pill);font-size:0.72rem;font-weight:600}
+.search-bar{display:flex;gap:0.75rem;max-width:600px;margin-bottom:2rem}
+.search-input{flex:1;padding:0.75rem 1.25rem;border:1.5px solid var(--border-mid);border-radius:var(--radius-pill);font-family:var(--font-body);font-size:0.95rem;outline:none;transition:var(--transition)}
+.search-input:focus{border-color:var(--green-500);box-shadow:0 0 0 3px rgba(64,145,108,0.12)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-mark">🌱</div><span class="nav-logo-text">Soil<span>Edu</span></span></a>
+    <div class="nav-links">
+      <a href="soil-science.html" class="nav-link">Soil Science</a>
+      <a href="watch.html" class="nav-link">Watch</a>
+      <a href="soil-rangers.html" class="nav-link rangers">Soil Rangers</a>
+      <a href="books.html" class="nav-link">Books</a>
+      <a href="learning-hub.html" class="nav-link active">Learning Hub</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Get in Touch</a>
+    <div class="nav-hamburger"><span></span><span></span><span></span></div>
+  </div>
+  <div class="nav-mobile"><a href="../index.html" class="nav-link">Home</a><a href="learning-hub.html" class="nav-link">Learning Hub</a><a href="soil-science.html" class="nav-link">Soil Science</a></div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb mb-3"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Learning Hub</span></nav>
+    <span class="eyebrow">Free Resources</span>
+    <h1>Learning Hub</h1>
+    <p>Free, curriculum-aligned resources for educators, parents, and young learners. Download, print, and teach.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="search-bar">
+      <input type="search" placeholder="Search resources..." class="search-input">
+      <button class="btn btn-primary">Search</button>
+    </div>
+
+    <div class="tabs-container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="tab-all">All Resources</button>
+        <button class="tab-btn" data-tab="tab-worksheets">📄 Worksheets</button>
+        <button class="tab-btn" data-tab="tab-lessons">📋 Lesson Plans</button>
+        <button class="tab-btn" data-tab="tab-posters">🗺️ Posters</button>
+        <button class="tab-btn" data-tab="tab-quizzes">❓ Quizzes</button>
+        <button class="tab-btn" data-tab="tab-colouring">🎨 Colouring</button>
+      </div>
+
+      <div id="tab-all" class="tab-panel active">
+        <div class="resource-grid">
+          <div class="res-card reveal reveal-delay-1">
+            <div class="res-card-top"><span class="icon">📄</span><h4>What is Soil? — Worksheet</h4></div>
+            <div class="res-card-bottom"><p>Introduction to soil components — minerals, organic matter, water, and air. Includes labelling and fill-in activities.</p><div class="res-meta"><span class="age-badge">Age 7–11</span><span class="badge badge-green">PDF</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+          <div class="res-card reveal reveal-delay-2">
+            <div class="res-card-top" style="background:var(--brown-50)"><span class="icon">📋</span><h4>Soil Layers Lesson Plan</h4></div>
+            <div class="res-card-bottom"><p>Full 45-minute lesson plan covering soil horizons, with discussion questions, activities, and assessment ideas.</p><div class="res-meta"><span class="age-badge">Age 9–14</span><span class="badge badge-brown">PDF</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+          <div class="res-card reveal reveal-delay-3">
+            <div class="res-card-top" style="background:var(--gold-100)"><span class="icon">🗺️</span><h4>Soil Cross-Section Poster</h4></div>
+            <div class="res-card-bottom"><p>Full-colour A3 classroom poster showing all soil horizons with labels, organisms, and descriptions.</p><div class="res-meta"><span class="age-badge">All ages</span><span class="badge badge-gold">PDF A3</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+          <div class="res-card reveal reveal-delay-4">
+            <div class="res-card-top" style="background:var(--purple-100)"><span class="icon">🎨</span><h4>Wriggles Colouring Page</h4></div>
+            <div class="res-card-bottom"><p>Printable colouring sheet featuring Wriggles the Earthworm in the soil world. Perfect for early years and KS1.</p><div class="res-meta"><span class="age-badge">Age 4–8</span><span class="badge badge-purple">PDF</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+          <div class="res-card reveal reveal-delay-1">
+            <div class="res-card-top"><span class="icon">❓</span><h4>Soil Science Quiz — KS2</h4></div>
+            <div class="res-card-bottom"><p>20-question multiple-choice quiz covering key stage 2 soil science concepts. Includes answer sheet.</p><div class="res-meta"><span class="age-badge">Age 7–11</span><span class="badge badge-green">PDF</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+          <div class="res-card reveal reveal-delay-2">
+            <div class="res-card-top" style="background:var(--brown-50)"><span class="icon">🪱</span><h4>Soil Organisms Matching Game</h4></div>
+            <div class="res-card-bottom"><p>Cut-out cards for matching soil organisms to their roles. Great for group work and revision activities.</p><div class="res-meta"><span class="age-badge">Age 8–12</span><span class="badge badge-brown">PDF</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+          <div class="res-card reveal reveal-delay-3">
+            <div class="res-card-top" style="background:var(--gold-100)"><span class="icon">🌡️</span><h4>Soil & Climate Explainer Sheet</h4></div>
+            <div class="res-card-bottom"><p>One-page visual explainer on the relationship between soil health and climate change. Ideal for display or homework.</p><div class="res-meta"><span class="age-badge">Age 11–16</span><span class="badge badge-gold">PDF</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+          <div class="res-card reveal reveal-delay-4">
+            <div class="res-card-top" style="background:var(--green-50)"><span class="icon">📋</span><h4>Soil Investigators — Full Unit</h4></div>
+            <div class="res-card-bottom"><p>Complete 5-lesson unit plan on soil investigation for KS2 — includes outdoor activities, worksheets, and assessments.</p><div class="res-meta"><span class="age-badge">Age 7–11</span><span class="badge badge-green">ZIP Pack</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download Free</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-worksheets" class="tab-panel">
+        <p style="color:var(--text-muted);margin-bottom:1.5rem">20 worksheets available for all age groups.</p>
+        <div class="resource-grid">
+          <div class="res-card reveal"><div class="res-card-top"><span class="icon">📄</span><h4>What is Soil? Worksheet</h4></div><div class="res-card-bottom"><p>Components of soil — fill in, label, and draw.</p><div class="res-meta"><span class="age-badge">Age 7–11</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+          <div class="res-card reveal reveal-delay-1"><div class="res-card-top"><span class="icon">📄</span><h4>Soil Horizons Worksheet</h4></div><div class="res-card-bottom"><p>Label the soil layers and describe each horizon.</p><div class="res-meta"><span class="age-badge">Age 9–13</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+          <div class="res-card reveal reveal-delay-2"><div class="res-card-top"><span class="icon">📄</span><h4>Soil & Food Chain Worksheet</h4></div><div class="res-card-bottom"><p>Trace the food chain back to soil. Fill-in format.</p><div class="res-meta"><span class="age-badge">Age 8–12</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+        </div>
+      </div>
+
+      <div id="tab-lessons" class="tab-panel">
+        <p style="color:var(--text-muted);margin-bottom:1.5rem">12 complete lesson plans available.</p>
+        <div class="resource-grid">
+          <div class="res-card reveal"><div class="res-card-top" style="background:var(--brown-50)"><span class="icon">📋</span><h4>Soil Layers — 45 min Lesson</h4></div><div class="res-card-bottom"><p>Full plan with objectives, activities, and assessment.</p><div class="res-meta"><span class="age-badge">Age 9–14</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+          <div class="res-card reveal reveal-delay-1"><div class="res-card-top" style="background:var(--brown-50)"><span class="icon">📋</span><h4>Soil Investigators Unit — 5 Lessons</h4></div><div class="res-card-bottom"><p>Full outdoor investigation unit for primary classes.</p><div class="res-meta"><span class="age-badge">Age 7–11</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+        </div>
+      </div>
+
+      <div id="tab-posters" class="tab-panel">
+        <div class="resource-grid">
+          <div class="res-card reveal"><div class="res-card-top" style="background:var(--gold-100)"><span class="icon">🗺️</span><h4>Soil Cross-Section Poster</h4></div><div class="res-card-bottom"><p>All horizons, organisms, and descriptions. A3.</p><div class="res-meta"><span class="age-badge">All ages</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+          <div class="res-card reveal reveal-delay-1"><div class="res-card-top" style="background:var(--gold-100)"><span class="icon">🗺️</span><h4>Soil Organisms Poster</h4></div><div class="res-card-bottom"><p>Who lives in soil? Visual guide to 20 key organisms.</p><div class="res-meta"><span class="age-badge">All ages</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+        </div>
+      </div>
+
+      <div id="tab-quizzes" class="tab-panel">
+        <div class="resource-grid">
+          <div class="res-card reveal"><div class="res-card-top"><span class="icon">❓</span><h4>Soil Science Quiz — KS2</h4></div><div class="res-card-bottom"><p>20 questions + answer sheet.</p><div class="res-meta"><span class="age-badge">Age 7–11</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+          <div class="res-card reveal reveal-delay-1"><div class="res-card-top"><span class="icon">❓</span><h4>Soil Rangers Series 1 Quiz</h4></div><div class="res-card-bottom"><p>Covering all concepts from the animated series.</p><div class="res-meta"><span class="age-badge">Age 5–10</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+        </div>
+      </div>
+
+      <div id="tab-colouring" class="tab-panel">
+        <div class="resource-grid">
+          <div class="res-card reveal"><div class="res-card-top" style="background:var(--purple-100)"><span class="icon">🎨</span><h4>Wriggles Colouring Page</h4></div><div class="res-card-bottom"><p>Earthworm hero in the soil world.</p><div class="res-meta"><span class="age-badge">Age 4–8</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+          <div class="res-card reveal reveal-delay-1"><div class="res-card-top" style="background:var(--purple-100)"><span class="icon">🎨</span><h4>All Rangers Colouring Pack</h4></div><div class="res-card-bottom"><p>6 pages — one for each Soil Ranger character.</p><div class="res-meta"><span class="age-badge">Age 4–8</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+          <div class="res-card reveal reveal-delay-2"><div class="res-card-top" style="background:var(--purple-100)"><span class="icon">🎨</span><h4>Underground World Colouring</h4></div><div class="res-card-bottom"><p>Full soil cross-section scene to colour.</p><div class="res-meta"><span class="age-badge">Age 4–10</span></div><a href="#" class="btn btn-primary btn-sm">⬇ Download</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="nav-logo"><div class="nav-logo-mark">🌱</div><span class="nav-logo-text" style="color:var(--green-200)">Soil<span style="color:var(--green-400)">Edu</span></span></div><p>Discovering the hidden world beneath our feet.</p></div>
+      <div class="footer-col"><h5>Resources</h5><a href="learning-hub.html">Learning Hub</a><a href="soil-science.html">Soil Science</a><a href="research.html">Research</a></div>
+      <div class="footer-col"><h5>Content</h5><a href="soil-rangers.html">Soil Rangers</a><a href="books.html">Books</a><a href="watch.html">Watch</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Soil Edu.</span><span>Made with 🌱</span></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

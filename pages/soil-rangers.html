@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soil Rangers — Soil Edu</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.rangers-hero { background:linear-gradient(135deg, #3d1f6b 0%, #6a4c9c 60%, #8b67c4 100%); }
+.episode-card { background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--border); overflow:hidden; transition:var(--transition); display:flex; align-items:stretch; }
+.episode-card:hover { box-shadow:var(--shadow-md); transform:translateX(4px); }
+.episode-num { width:70px; background:var(--purple-600); color:white; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.5rem; font-weight:800; flex-shrink:0; }
+.episode-info { padding:1.25rem 1.5rem; flex:1; }
+.episode-info h4 { color:var(--green-800); }
+.episode-info p { font-size:0.88rem; margin-top:0.25rem; }
+.episode-meta { display:flex; gap:0.75rem; margin-top:0.75rem; flex-wrap:wrap; align-items:center; }
+.trailer-box { background:var(--purple-100); border-radius:var(--radius-xl); aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; cursor:pointer; transition:var(--transition); border:2px solid var(--purple-300); }
+.trailer-box:hover { background:var(--purple-100); border-color:var(--purple-500); transform:scale(1.01); }
+.play-btn { width:72px; height:72px; background:var(--purple-600); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; padding-left:6px; box-shadow:0 8px 24px rgba(106,76,156,0.4); transition:var(--transition); }
+.trailer-box:hover .play-btn { transform:scale(1.1); background:var(--purple-700); }
+.activity-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; display:flex; gap:1rem; align-items:flex-start; transition:var(--transition); }
+.activity-card:hover { box-shadow:var(--shadow-sm); }
+.activity-icon { font-size:2rem; flex-shrink:0; width:52px; height:52px; background:var(--purple-100); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><div class="nav-logo-mark">🌱</div><span class="nav-logo-text">Soil<span>Edu</span></span></a>
+    <div class="nav-links">
+      <a href="soil-science.html" class="nav-link">Soil Science</a>
+      <a href="watch.html" class="nav-link">Watch</a>
+      <a href="soil-rangers.html" class="nav-link rangers active">Soil Rangers</a>
+      <a href="books.html" class="nav-link">Books</a>
+      <a href="learning-hub.html" class="nav-link">Learning Hub</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Get in Touch</a>
+    <div class="nav-hamburger"><span></span><span></span><span></span></div>
+  </div>
+  <div class="nav-mobile"><a href="../index.html" class="nav-link">Home</a><a href="soil-rangers.html" class="nav-link">Soil Rangers</a><a href="watch.html" class="nav-link">Watch</a><a href="learning-hub.html" class="nav-link">Learning Hub</a></div>
+</nav>
+
+<div class="page-hero page-hero-purple">
+  <div class="container">
+    <nav class="breadcrumb mb-3"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Soil Rangers</span></nav>
+    <span class="eyebrow" style="color:var(--purple-300)">🎬 Animated Series</span>
+    <h1>Soil Rangers</h1>
+    <p>Join a team of underground heroes on soil-saving missions — a curriculum-aligned animated series that makes soil science irresistible for primary-age children.</p>
+    <div style="display:flex;gap:1rem;margin-top:1.75rem;flex-wrap:wrap">
+      <a href="watch.html" class="btn btn-gold">▶ Watch Now</a>
+      <a href="learning-hub.html" class="btn" style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.35);border-radius:var(--radius-pill);padding:0.75rem 1.75rem;font-weight:600">📥 Get Activities</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT THE SERIES -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="grid-2" style="gap:4rem;align-items:center">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--purple-600)">About the series</span>
+        <h2 style="color:var(--green-800);margin-top:0.5rem">Underground heroes for the next generation</h2>
+        <p style="margin:1rem 0">Soil Rangers follows a team of miniature underground characters who live in the soil and work together to protect it from threats — pollution, erosion, compaction, and drought. Each episode is built around real soil science concepts, making it a perfect companion for primary science curricula.</p>
+        <p>The series is designed for children aged 4–12, with stories entertaining enough to captivate young viewers and science accurate enough to satisfy their teachers.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem">
+          <div style="background:var(--purple-100);border-radius:var(--radius-md);padding:1rem;text-align:center">
+            <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--purple-600)">4–12</div>
+            <div style="font-size:0.82rem;color:var(--purple-700)">Target age range</div>
+          </div>
+          <div style="background:var(--green-100);border-radius:var(--radius-md);padding:1rem;text-align:center">
+            <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--green-600)">12+</div>
+            <div style="font-size:0.82rem;color:var(--green-700)">Episodes planned</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="trailer-box">
+          <div class="play-btn">▶</div>
+          <div style="text-align:center">
+            <p style="color:var(--purple-700);font-weight:600;font-size:1.05rem">Watch the Trailer</p>
+            <p style="color:var(--purple-500);font-size:0.85rem">2:34 · Official Series Trailer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="section" style="background:var(--purple-100)">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="eyebrow" style="color:var(--purple-600)">Meet the team</span>
+      <h2 style="color:var(--green-800)">The Soil Rangers</h2>
+      <p>Six unique underground characters, each representing a different part of the soil ecosystem.</p>
+    </div>
+    <div class="grid-3 mt-6">
+      <div class="character-card reveal reveal-delay-1">
+        <div class="character-avatar">🪱</div>
+        <h3>Wriggles</h3>
+        <div class="role">Earthworm · Team Leader</div>
+        <p>The brave leader of the Soil Rangers. Wriggles tunnels through soil creating pathways for water and roots, and rallies the team when danger threatens the underground world.</p>
+        <div style="margin-top:1rem"><span class="badge badge-green">Main character</span></div>
+      </div>
+      <div class="character-card reveal reveal-delay-2">
+        <div class="character-avatar">🍄</div>
+        <h3>Mykie</h3>
+        <div class="role">Mycorrhizal Fungus · Communicator</div>
+        <p>The quiet but wise network-builder. Mykie connects plant roots across the underground, passing nutrients and messages through an invisible web of fungal threads.</p>
+        <div style="margin-top:1rem"><span class="badge badge-brown">Main character</span></div>
+      </div>
+      <div class="character-card reveal reveal-delay-3">
+        <div class="character-avatar">🐛</div>
+        <h3>Cater</h3>
+        <div class="role">Caterpillar Larva · Engineer</div>
+        <p>The team's practical problem-solver. Cater knows everything about soil structure and porosity, and can always find a way to fix a compacted section or restore a flood channel.</p>
+        <div style="margin-top:1rem"><span class="badge badge-purple">Main character</span></div>
+      </div>
+      <div class="character-card reveal reveal-delay-1">
+        <div class="character-avatar">🦠</div>
+        <h3>Micro</h3>
+        <div class="role">Soil Bacterium · Scientist</div>
+        <p>Tiny but brilliant. Micro is always busy breaking down organic matter and cycling nutrients — and loves explaining the science behind everything the Rangers encounter.</p>
+        <div style="margin-top:1rem"><span class="badge badge-gold">Supporting character</span></div>
+      </div>
+      <div class="character-card reveal reveal-delay-2">
+        <div class="character-avatar">🐜</div>
+        <h3>Anty</h3>
+        <div class="role">Soil Ant · Organiser</div>
+        <p>The hard-working team organiser. Anty coordinates the Rangers' missions, keeps track of the soil's health, and is always the first to spot trouble from the surface above.</p>
+        <div style="margin-top:1rem"><span class="badge badge-green">Supporting character</span></div>
+      </div>
+      <div class="character-card reveal reveal-delay-3">
+        <div class="character-avatar">🌱</div>
+        <h3>Sprout</h3>
+        <div class="role">Seedling Root · Newcomer</div>
+        <p>The newest and youngest Ranger — a seedling that has just pushed its roots into the soil world. Sprout asks all the questions that children want to ask, making it easy for viewers to learn alongside them.</p>
+        <div style="margin-top:1rem"><span class="badge badge-brown">Supporting character</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EPISODES -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="flex-between mb-6 reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--purple-600)">Series 1</span>
+        <h2 style="color:var(--green-800);margin-top:0.5rem">Episodes</h2>
+      </div>
+      <a href="watch.html" class="btn btn-secondary">Watch all →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.75rem">
+      <div class="episode-card reveal reveal-delay-1"><div class="episode-num">01</div><div class="episode-info"><h4>Wriggles to the Rescue</h4><p>The Rangers discover the topsoil is being compacted by heavy machinery — and must find a way to aerate it before the root community suffocates.</p><div class="episode-meta"><span class="badge badge-purple">Soil Compaction</span><span class="caption">12 min</span><span class="badge badge-green">Available now</span></div></div></div>
+      <div class="episode-card reveal reveal-delay-2"><div class="episode-num">02</div><div class="episode-info"><h4>The Flood That Came from Above</h4><p>A heavy rainstorm threatens to wash the topsoil away. The team must build natural defences using roots, fungi, and organic matter to hold the soil together.</p><div class="episode-meta"><span class="badge badge-purple">Erosion</span><span class="caption">11 min</span><span class="badge badge-green">Available now</span></div></div></div>
+      <div class="episode-card reveal reveal-delay-3"><div class="episode-num">03</div><div class="episode-info"><h4>Mykie's Missing Network</h4><p>The fungal communication network has been severed — and plants above are struggling without it. Can the team restore the mycorrhizal threads in time?</p><div class="episode-meta"><span class="badge badge-purple">Mycorrhizal Fungi</span><span class="caption">13 min</span><span class="badge badge-green">Available now</span></div></div></div>
+      <div class="episode-card reveal"><div class="episode-num">04</div><div class="episode-info"><h4>The Poison from Above</h4><p>A mysterious chemical is seeping into the soil and harming the micro-organisms. The Rangers investigate the source and work to neutralise the threat.</p><div class="episode-meta"><span class="badge badge-purple">Soil Pollution</span><span class="caption">14 min</span><span class="badge badge-gold">Coming soon</span></div></div></div>
+      <div class="episode-card reveal reveal-delay-1"><div class="episode-num">05</div><div class="episode-info"><h4>Where Has All the Water Gone?</h4><p>Drought is drying the upper soil layers and the Rangers must work together to increase the soil's water-holding capacity before it's too late.</p><div class="episode-meta"><span class="badge badge-purple">Soil & Water</span><span class="caption">12 min</span><span class="badge badge-gold">Coming soon</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="section" style="background:var(--green-50)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Learning activities</span>
+      <h2 style="color:var(--green-800);margin-top:0.5rem">Classroom resources for every episode</h2>
+      <p>Each Soil Rangers episode comes with a full classroom activity pack — worksheets, discussion guides, and hands-on experiments.</p>
+    </div>
+    <div class="grid-2 mt-6">
+      <div class="activity-card reveal reveal-delay-1">
+        <div class="activity-icon">📄</div>
+        <div><h4>Episode 1 Activity Pack</h4><p style="font-size:0.88rem">Soil compaction experiment, vocabulary worksheet, and drawing activity.</p><a href="learning-hub.html" class="btn btn-primary btn-sm mt-2">Download Free</a></div>
+      </div>
+      <div class="activity-card reveal reveal-delay-2">
+        <div class="activity-icon">🎨</div>
+        <div><h4>Character Colouring Pages</h4><p style="font-size:0.88rem">All 6 Soil Rangers as printable colouring sheets for younger children.</p><a href="learning-hub.html" class="btn btn-primary btn-sm mt-2">Download Free</a></div>
+      </div>
+      <div class="activity-card reveal reveal-delay-3">
+        <div class="activity-icon">🗺️</div>
+        <div><h4>Underground World Poster</h4><p style="font-size:0.88rem">A3 classroom poster showing the Soil Rangers in their soil cross-section home.</p><a href="learning-hub.html" class="btn btn-primary btn-sm mt-2">Download Free</a></div>
+      </div>
+      <div class="activity-card reveal">
+        <div class="activity-icon">❓</div>
+        <div><h4>Series 1 Quiz</h4><p style="font-size:0.88rem">20-question quiz covering all soil science concepts from Series 1.</p><a href="learning-hub.html" class="btn btn-primary btn-sm mt-2">Download Free</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="newsletter-section reveal" style="background:linear-gradient(135deg, var(--purple-700), var(--purple-600))">
+      <div style="max-width:560px">
+        <h2 style="color:white">Get Soil Rangers updates</h2>
+        <p style="color:rgba(255,255,255,0.85);margin:0.75rem 0 1.5rem">Be the first to know about new episodes, activity packs, and Soil Rangers news.</p>
+        <form class="newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Your email address" class="newsletter-input" required>
+          <button type="submit" class="btn btn-gold">Subscribe 🌱</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="nav-logo"><div class="nav-logo-mark">🌱</div><span class="nav-logo-text" style="color:var(--green-200)">Soil<span style="color:var(--green-400)">Edu</span></span></div><p>Discovering the hidden world beneath our feet.</p></div>
+      <div class="footer-col"><h5>Learn</h5><a href="soil-science.html">Soil Science</a><a href="research.html">Research</a><a href="watch.html">Watch</a><a href="learning-hub.html">Learning Hub</a></div>
+      <div class="footer-col"><h5>Rangers</h5><a href="soil-rangers.html">About the Series</a><a href="soil-rangers.html#characters">Characters</a><a href="soil-rangers.html#episodes">Episodes</a><a href="learning-hub.html">Activities</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="about.html">About</a><a href="contact.html">Contact</a><a href="contact.html#partners">Partners</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Soil Edu.</span><span>Made with 🌱 for a soil-literate world</span></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

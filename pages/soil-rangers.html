@@ -14,10 +14,12 @@
 .episode-info h4 { color:var(--green-800); }
 .episode-info p { font-size:0.88rem; margin-top:0.25rem; }
 .episode-meta { display:flex; gap:0.75rem; margin-top:0.75rem; flex-wrap:wrap; align-items:center; }
-.trailer-box { background:var(--purple-100); border-radius:var(--radius-xl); aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; cursor:pointer; transition:var(--transition); border:2px solid var(--purple-300); }
-.trailer-box:hover { background:var(--purple-100); border-color:var(--purple-500); transform:scale(1.01); }
-.play-btn { width:72px; height:72px; background:var(--purple-600); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; padding-left:6px; box-shadow:0 8px 24px rgba(106,76,156,0.4); transition:var(--transition); }
-.trailer-box:hover .play-btn { transform:scale(1.1); background:var(--purple-700); }
+.video-embed { position:relative; aspect-ratio:16/9; border-radius:var(--radius-xl); overflow:hidden; border:2px solid var(--purple-300); background:#000; box-shadow:0 8px 32px rgba(106,76,156,0.2); }
+.video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.video-caption { margin-top:0.75rem; font-size:0.85rem; color:var(--purple-500); text-align:center; }
+.group-photo { width:100%; height:auto; display:block; border-radius:var(--radius-xl); border:2px solid var(--white); box-shadow:var(--shadow-md); }
+.ranger-photo { width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border-radius:var(--radius-lg); margin-bottom:1.25rem; background:#f3efe9; }
+@media (min-width: 769px) and (max-width: 1024px) { #characters .grid-4 { grid-template-columns:repeat(2, 1fr); } }
 .activity-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; display:flex; gap:1rem; align-items:flex-start; transition:var(--transition); }
 .activity-card:hover { box-shadow:var(--shadow-sm); }
 .activity-icon { font-size:2rem; flex-shrink:0; width:52px; height:52px; background:var(--purple-100); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; }
@@ -63,89 +65,67 @@
       <div class="reveal">
         <span class="eyebrow" style="color:var(--purple-600)">About the series</span>
         <h2 style="color:var(--green-800);margin-top:0.5rem">Underground heroes for the next generation</h2>
-        <p style="margin:1rem 0">Soil Rangers follows a team of miniature underground characters who live in the soil and work together to protect it from threats — pollution, erosion, compaction, and drought. Each episode is built around real soil science concepts, making it a perfect companion for primary science curricula.</p>
+        <p style="margin:1rem 0">The Soil Rangers are a team of curious young explorers on a mission to uncover the hidden world beneath our feet. Through exciting adventures, experiments and discoveries, they learn about soil layers, roots, organisms and why healthy soil is essential for a healthy planet.</p>
         <p>The series is designed for children aged 4–12, with stories entertaining enough to captivate young viewers and science accurate enough to satisfy their teachers.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem">
           <div style="background:var(--purple-100);border-radius:var(--radius-md);padding:1rem;text-align:center">
             <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--purple-600)">4–12</div>
             <div style="font-size:0.82rem;color:var(--purple-700)">Target age range</div>
           </div>
-          <div style="background:var(--green-100);border-radius:var(--radius-md);padding:1rem;text-align:center">
-            <div style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--green-600)">12+</div>
-            <div style="font-size:0.82rem;color:var(--green-700)">Episodes planned</div>
-          </div>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="trailer-box">
-          <div class="play-btn">▶</div>
-          <div style="text-align:center">
-            <p style="color:var(--purple-700);font-weight:600;font-size:1.05rem">Watch the Trailer</p>
-            <p style="color:var(--purple-500);font-size:0.85rem">2:34 · Official Series Trailer</p>
-          </div>
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/GiFAxo3YUXU" title="Soil Rangers Episode 1: Soil is NOT Dirt!" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        <p class="video-caption">Episode 1 · Soil is NOT Dirt! · <a href="https://www.youtube.com/watch?v=GiFAxo3YUXU" target="_blank" rel="noopener">Watch on YouTube</a></p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CHARACTERS -->
-<section class="section" style="background:var(--purple-100)">
+<section class="section" id="characters" style="background:var(--purple-100)">
   <div class="container">
     <div class="section-header center reveal">
       <span class="eyebrow" style="color:var(--purple-600)">Meet the team</span>
-      <h2 style="color:var(--green-800)">The Soil Rangers</h2>
-      <p>Six unique underground characters, each representing a different part of the soil ecosystem.</p>
+      <h2 style="color:var(--green-800)">Meet the Soil Rangers</h2>
+      <p>Four curious young explorers, each with their own way of uncovering the hidden world beneath our feet.</p>
     </div>
-    <div class="grid-3 mt-6">
+    <div class="reveal mt-6">
+      <img src="../images/soil-rangers/group.jpg" alt="The Soil Rangers team: Timi, Lina, Max and Emma" class="group-photo" width="1379" height="770" loading="lazy">
+    </div>
+    <div class="grid-4 mt-6">
       <div class="character-card reveal reveal-delay-1">
-        <div class="character-avatar">🪱</div>
-        <h3>Wriggles</h3>
-        <div class="role">Earthworm · Team Leader</div>
-        <p>The brave leader of the Soil Rangers. Wriggles tunnels through soil creating pathways for water and roots, and rallies the team when danger threatens the underground world.</p>
-        <div style="margin-top:1rem"><span class="badge badge-green">Main character</span></div>
+        <img src="../images/soil-rangers/emma.jpg" alt="Emma, the Science Storyteller" class="ranger-photo" width="450" height="600" loading="lazy">
+        <h3>Emma</h3>
+        <div class="role">The Science Storyteller</div>
+        <p>Emma makes soil science simple, exciting and easy to understand. She connects what happens underground to plants, food, people and the wider world.</p>
       </div>
       <div class="character-card reveal reveal-delay-2">
-        <div class="character-avatar">🍄</div>
-        <h3>Mykie</h3>
-        <div class="role">Mycorrhizal Fungus · Communicator</div>
-        <p>The quiet but wise network-builder. Mykie connects plant roots across the underground, passing nutrients and messages through an invisible web of fungal threads.</p>
-        <div style="margin-top:1rem"><span class="badge badge-brown">Main character</span></div>
+        <img src="../images/soil-rangers/lina.jpg" alt="Lina, the Soil Layers Expert" class="ranger-photo" width="450" height="600" loading="lazy">
+        <h3>Lina</h3>
+        <div class="role">The Soil Layers Expert</div>
+        <p>Thoughtful and observant, Lina understands how soil layers, water, roots and nutrients connect. She helps the team uncover the stories hidden within a soil profile.</p>
       </div>
       <div class="character-card reveal reveal-delay-3">
-        <div class="character-avatar">🐛</div>
-        <h3>Cater</h3>
-        <div class="role">Caterpillar Larva · Engineer</div>
-        <p>The team's practical problem-solver. Cater knows everything about soil structure and porosity, and can always find a way to fix a compacted section or restore a flood channel.</p>
-        <div style="margin-top:1rem"><span class="badge badge-purple">Main character</span></div>
+        <img src="../images/soil-rangers/max.jpg" alt="Max, the Soil Engineer" class="ranger-photo" width="450" height="600" loading="lazy">
+        <h3>Max</h3>
+        <div class="role">The Soil Engineer</div>
+        <p>Max examines soil structure, erosion and how water moves across the land. He enjoys finding practical ways to protect soil and help roots grow.</p>
       </div>
-      <div class="character-card reveal reveal-delay-1">
-        <div class="character-avatar">🦠</div>
-        <h3>Micro</h3>
-        <div class="role">Soil Bacterium · Scientist</div>
-        <p>Tiny but brilliant. Micro is always busy breaking down organic matter and cycling nutrients — and loves explaining the science behind everything the Rangers encounter.</p>
-        <div style="margin-top:1rem"><span class="badge badge-gold">Supporting character</span></div>
-      </div>
-      <div class="character-card reveal reveal-delay-2">
-        <div class="character-avatar">🐜</div>
-        <h3>Anty</h3>
-        <div class="role">Soil Ant · Organiser</div>
-        <p>The hard-working team organiser. Anty coordinates the Rangers' missions, keeps track of the soil's health, and is always the first to spot trouble from the surface above.</p>
-        <div style="margin-top:1rem"><span class="badge badge-green">Supporting character</span></div>
-      </div>
-      <div class="character-card reveal reveal-delay-3">
-        <div class="character-avatar">🌱</div>
-        <h3>Sprout</h3>
-        <div class="role">Seedling Root · Newcomer</div>
-        <p>The newest and youngest Ranger — a seedling that has just pushed its roots into the soil world. Sprout asks all the questions that children want to ask, making it easy for viewers to learn alongside them.</p>
-        <div style="margin-top:1rem"><span class="badge badge-brown">Supporting character</span></div>
+      <div class="character-card reveal">
+        <img src="../images/soil-rangers/timi.jpg" alt="Timi, the Soil Detective" class="ranger-photo" width="450" height="600" loading="lazy">
+        <h3>Timi</h3>
+        <div class="role">The Soil Detective</div>
+        <p>Timi loves searching for clues beneath the surface. With his magnifying glass and curious mind, he studies roots, soil and tiny signs of life that others might miss.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- EPISODES -->
-<section class="section bg-white">
+<section class="section bg-white" id="episodes">
   <div class="container">
     <div class="flex-between mb-6 reveal">
       <div>
@@ -155,11 +135,7 @@
       <a href="watch.html" class="btn btn-secondary">Watch all →</a>
     </div>
     <div style="display:flex;flex-direction:column;gap:0.75rem">
-      <div class="episode-card reveal reveal-delay-1"><div class="episode-num">01</div><div class="episode-info"><h4>Wriggles to the Rescue</h4><p>The Rangers discover the topsoil is being compacted by heavy machinery — and must find a way to aerate it before the root community suffocates.</p><div class="episode-meta"><span class="badge badge-purple">Soil Compaction</span><span class="caption">12 min</span><span class="badge badge-green">Available now</span></div></div></div>
-      <div class="episode-card reveal reveal-delay-2"><div class="episode-num">02</div><div class="episode-info"><h4>The Flood That Came from Above</h4><p>A heavy rainstorm threatens to wash the topsoil away. The team must build natural defences using roots, fungi, and organic matter to hold the soil together.</p><div class="episode-meta"><span class="badge badge-purple">Erosion</span><span class="caption">11 min</span><span class="badge badge-green">Available now</span></div></div></div>
-      <div class="episode-card reveal reveal-delay-3"><div class="episode-num">03</div><div class="episode-info"><h4>Mykie's Missing Network</h4><p>The fungal communication network has been severed — and plants above are struggling without it. Can the team restore the mycorrhizal threads in time?</p><div class="episode-meta"><span class="badge badge-purple">Mycorrhizal Fungi</span><span class="caption">13 min</span><span class="badge badge-green">Available now</span></div></div></div>
-      <div class="episode-card reveal"><div class="episode-num">04</div><div class="episode-info"><h4>The Poison from Above</h4><p>A mysterious chemical is seeping into the soil and harming the micro-organisms. The Rangers investigate the source and work to neutralise the threat.</p><div class="episode-meta"><span class="badge badge-purple">Soil Pollution</span><span class="caption">14 min</span><span class="badge badge-gold">Coming soon</span></div></div></div>
-      <div class="episode-card reveal reveal-delay-1"><div class="episode-num">05</div><div class="episode-info"><h4>Where Has All the Water Gone?</h4><p>Drought is drying the upper soil layers and the Rangers must work together to increase the soil's water-holding capacity before it's too late.</p><div class="episode-meta"><span class="badge badge-purple">Soil & Water</span><span class="caption">12 min</span><span class="badge badge-gold">Coming soon</span></div></div></div>
+      <a href="https://www.youtube.com/watch?v=GiFAxo3YUXU" target="_blank" rel="noopener" class="episode-card reveal reveal-delay-1" style="text-decoration:none;color:inherit"><div class="episode-num">01</div><div class="episode-info"><h4>Soil is NOT Dirt!</h4><p>Our young explorers discover that soil is much more than the brown stuff beneath our feet. Soil is a living, dynamic system filled with minerals, water, air, organic matter and countless living organisms — it supports plants, stores water, cycles nutrients and helps sustain life on Earth.</p><div class="episode-meta"><span class="badge badge-purple">What is Soil?</span><span class="badge badge-green">Available now</span><span class="caption">▶ Watch on YouTube</span></div></div></a>
     </div>
   </div>
 </section>
@@ -179,7 +155,7 @@
       </div>
       <div class="activity-card reveal reveal-delay-2">
         <div class="activity-icon">🎨</div>
-        <div><h4>Character Colouring Pages</h4><p style="font-size:0.88rem">All 6 Soil Rangers as printable colouring sheets for younger children.</p><a href="learning-hub.html" class="btn btn-primary btn-sm mt-2">Download Free</a></div>
+        <div><h4>Character Colouring Pages</h4><p style="font-size:0.88rem">All 4 Soil Rangers as printable colouring sheets for younger children.</p><a href="learning-hub.html" class="btn btn-primary btn-sm mt-2">Download Free</a></div>
       </div>
       <div class="activity-card reveal reveal-delay-3">
         <div class="activity-icon">🗺️</div>
